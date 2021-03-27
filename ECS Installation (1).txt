@@ -1,0 +1,60 @@
+1. git install
+ 	[vagrant@localhost ~]$ sudo su
+	[root@localhost vagrant]# yum install git -y
+	[root@localhost vagrant]# git --version
+	git version 1.7.1
+		 
+2. jdk install means java
+   	1.goto winscp and copy the JDK8 file
+	2.then goto putty
+	3.[root@localhost vagrant]# ls
+		jdk-8u171-linux-x64.tar.gz
+	4.[root@localhost vagrant]# tar -xzf jdk-8u171-linux-x64.tar.gz
+	5.[root@localhost vagrant]# ls
+		jdk1.8.0_171  jdk-8u171-linux-x64.tar.gz
+	6.[root@localhost vagrant]# mv jdk1.8.0_171/ /opt/
+	7.[root@localhost vagrant]# cd /opt/
+	8.[root@localhost opt]# ls
+	9.[root@localhost opt]# cd /home/vagrant/
+	10.[root@localhost vagrant]# vi ~/.bashrc
+		export JAVA_HOME=/opt/jdk1.8.0_171
+		export PATH=$PATH:JAVA_HOME/bin
+
+			esc:wq!
+	11.[root@localhost vagrant]#yum install java -y
+	12.[root@localhost vagrant]#java -version
+
+3. Maven install:
+	1.[root@localhost vagrant]# wget http://www.eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+	2.[root@localhost vagrant]# ls
+	3.[root@localhost vagrant]# tar xzf apache-maven-3.3.9-bin.tar.gztar xzf apache-maven-3.3.9-bin.tar.gz
+	4.[root@localhost vagrant]# ls
+		apache-maven-3.3.9  apache-maven-3.3.9-bin.tar.gz  jdk1.8.0_171  jdk-8u171-linux-x64.tar.gz
+	5.[root@localhost vagrant]# cd /usr/local/
+	6.[root@localhost local]# ls
+		bin  etc  games  include  lib  lib64  libexec  sbin  share  src
+	7.[root@localhost local]# mkdir apache-maven
+	8.[root@localhost local]# ls
+		apache-maven  bin  etc  games  include  lib  lib64  libexec  sbin  share  src
+	9.[root@localhost local]#cd /home/vagrant/
+	10.[root@localhost vagrant]# mv apache-maven-3.3.9/* /usr/local/apache-maven/
+	11.[root@localhost vagrant]#cd /usr/local/apache-maven/
+	12.[root@localhost apache-maven]# vi ~/.bashrc
+			export M2_HOME=/usr/local/apache-maven
+			export M2=$M2_HOME/bin
+			export PATH=$M2:$PATH
+			
+				esc:wq!
+	13.[root@localhost apache-maven]# source ~/.bashrc
+	14.[root@localhost apache-maven]# mvn -version
+
+4. jenkins install
+	1.[root@localhost vagrant]# wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+	2.[root@localhost vagrant]# rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+	3.[root@localhost vagrant]# yum install jenkins -y
+	4.[root@localhost vagrant]#cd /var/lib/jenkins/
+	5.[root@ jenkins] cat initialadminpasswd
+
+5. docker install
+
+ wget http://yum.dockerproject.org/repo/main/centos/6/Packages/docker-engine-1.7.0-1.el6.x86_64.rpm
